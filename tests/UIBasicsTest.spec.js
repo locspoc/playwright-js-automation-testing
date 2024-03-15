@@ -8,6 +8,6 @@ test('Browser Context Page Declaration Playwright test', async ({
 	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
 });
 
-test('Page Context Page Declaration Playwright test', async ({ page }) => {
-	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+test.only('Page Context Page Declaration Playwright test', async ({ page }) => {
+	await page.goto('https://google.com');
 });
