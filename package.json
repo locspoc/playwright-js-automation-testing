@@ -1,0 +1,14 @@
+{
+  "name": "playwright-js-automation-testing",
+  "version": "1.0.0",
+  "description": "Playwright JS Automation Testing",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.28"
+  }
+}
