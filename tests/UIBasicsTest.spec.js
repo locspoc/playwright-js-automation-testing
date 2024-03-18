@@ -7,6 +7,9 @@ test('Browser Context Page Declaration Playwright test', async ({
 	const page = await context.newPage();
 	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
 	console.log(await page.title());
+	await page.locator('#username').fill('loctran');
+	await page.locator("[type='password']").fill('learning');
+	await page.locator('#signInBtn').click();
 });
 
 test('Page Context Page Declaration Playwright test', async ({ page }) => {
