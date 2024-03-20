@@ -10,19 +10,22 @@ test.only('Browser Context Page Declaration Playwright test', async ({
 	const userName = page.locator('#username');
 	const passWord = page.locator("[type='password']");
 	const signIn = page.locator('#signInBtn');
+	const cardTitles = page.locator('.card-body a');
 	await userName.fill('rahulshetty');
 	await passWord.fill('learning');
 	await signIn.click();
 	console.log(await page.locator("[style*='block']").textContent());
-	// await expect(page.locator("[style*='block']")).toHaveText('[Incorrect]');
+	await expect(page.locator("[style*='block']")).toContainText('Incorrect');
 	await userName.fill('');
 	await userName.fill('rahulshettyacademy');
 	await passWord.fill('');
 	await passWord.fill('learning');
 	await signIn.click();
-	console.log(await page.locator('.card-body a').first().textContent());
-	console.log(await page.locator('.card-body a').nth(0).textContent());
-	console.log(await page.locator('.card-body a').nth(1).textContent());
+	console.log(await cardTitles.first().textContent());
+	console.log(await cardTitles.nth(0).textContent());
+	console.log(await cardTitles.nth(1).textContent());
+	const allTitles = await cardTitles.allTextContents();
+	console.log(allTitles);
 });
 
 test('Page Context Page Declaration Playwright test', async ({ page }) => {
