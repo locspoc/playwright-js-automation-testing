@@ -1,8 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.only('Browser Context Page Declaration Playwright test', async ({
-	browser,
-}) => {
+test('Browser Context-Validating Error login', async ({ browser }) => {
 	const context = await browser.newContext();
 	const page = await context.newPage();
 	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
