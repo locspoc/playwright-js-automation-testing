@@ -26,8 +26,15 @@ test('Browser Context-Validating Error login', async ({ browser }) => {
 	console.log(allTitles);
 });
 
-test('Page Context Page Declaration Playwright test', async ({ page }) => {
-	await page.goto('https://google.com');
-	console.log(await page.title());
-	await expect(page).toHaveTitle('Google');
+test('UI Controls', async ({ page }) => {
+	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+	const userName = page.locator('#username');
+	const passWord = page.locator("[type='password']");
+	const signIn = page.locator('#signInBtn');
+	const dropdown = page.locator('select.form-control');
+	await dropdown.selectOption('consult');
+	await page.locator('.radiotextsty').last().click();
+	await page.locator('#okayBtn').click();
+	// assertion
+	await page.pause();
 });
