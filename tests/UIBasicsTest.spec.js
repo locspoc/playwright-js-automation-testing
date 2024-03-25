@@ -26,7 +26,7 @@ test('Browser Context-Validating Error login', async ({ browser }) => {
 	console.log(allTitles);
 });
 
-test.only('UI Controls', async ({ page }) => {
+test('UI Controls', async ({ page }) => {
 	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
 	const userName = page.locator('#username');
 	const passWord = page.locator("[type='password']");
@@ -44,4 +44,24 @@ test.only('UI Controls', async ({ page }) => {
 	expect(await page.locator('#terms').isChecked()).toBeFalsy();
 	await expect(documentLink).toHaveAttribute('class', 'blinkingText');
 	// await page.pause();
+});
+
+test.only('Child windows handle', async ({ browser }) => {
+	const context = await browser.newContext();
+	const page = await context.newPage();
+	const userName = page.locator('#username');
+	await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+	const documentLink = page.locator("[href*='documents-request']");
+	const [newPage, newPage2] = await Promise.all([
+		context.waitForEvent('page'), // listen for any new page pending, rejected, fulfilled
+		documentLink.click(),
+	]); // new page opened
+	// newPage2.click(); for when there is multiple tabs
+	const text = await newPage.locator('.red').textContent();
+	const arrayText = text.split('@');
+	const domain = arrayText[1].split(' ')[0];
+	console.log(domain);
+	await page.locator('#username').fill(domain);
+	await page.pause();
+	console.log(await page.locator('#username').textContent());
 });
