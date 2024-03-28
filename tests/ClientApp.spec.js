@@ -18,12 +18,30 @@ test('Browser Context-Validating Error login', async ({ page }) => {
 		) {
 			// add to cart
 			await products.nth(i).locator('text= Add To Cart').click();
-			await page.pause();
+			// await page.pause();
 			break;
 		}
-		await page.locator("[routerlink*='cart]").click();
-		await page.locator('div li').first().waitFor();
-		const bool = page.locator('h3:has-text("ZARA COAT 3")').isVisible();
-		expect(bool).toBeTruthy();
+		// await page.pause();
+	}
+
+	await page.locator("[routerlink*='/dashboard/cart']").click();
+	// await page.pause();
+	await page.locator('div li').first().waitFor();
+	// await page.pause();
+	const bool = page.locator('h3:has-text("ZARA COAT 3")').isVisible();
+	expect(bool).toBeTruthy();
+	await page.locator('text=Checkout').click();
+	await page.locator("[placeholder*='Country']").pressSequentially('ind');
+	const dropdown = page.locator('.ta-results');
+	await dropdown.waitFor();
+	await dropdown.locator('button').count();
+	const optionsCount = await dropdown.locator('buttons').count();
+	for (let i = 0; i < optionsCount; i++) {
+		const text = await dropdown.locator('button').nth(i).textContent();
+		if (text === ' India') {
+			await dropdown.locator('button').nth(i).click();
+			// await page.pause();
+			break;
+		}
 	}
 });
