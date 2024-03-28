@@ -46,7 +46,7 @@ test('UI Controls', async ({ page }) => {
 	// await page.pause();
 });
 
-test.only('Child windows handle', async ({ browser }) => {
+test('Child windows handle', async ({ browser }) => {
 	const context = await browser.newContext();
 	const page = await context.newPage();
 	const userName = page.locator('#username');
@@ -64,4 +64,10 @@ test.only('Child windows handle', async ({ browser }) => {
 	await page.locator('#username').fill(domain);
 	await page.pause();
 	console.log(await page.locator('#username').textContent());
+});
+
+test.only('codegen test', async ({ page }) => {
+	await page.goto('https://www.google.com/');
+	await page.getByLabel('Search', { exact: true }).fill('loc tran');
+	await page.goto('https://loctran.com.au/');
 });
