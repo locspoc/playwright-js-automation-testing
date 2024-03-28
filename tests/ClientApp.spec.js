@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 test('Browser Context-Validating Error login', async ({ page }) => {
-	const productName = 'Zara Coat 4';
+	const productName = 'ZARA COAT 3';
 	const products = page.locator('.card-body');
 	await page.goto('https://www.rahulshettyacademy.com/client');
 	await page.locator('#userEmail').fill('anshika@gmail.com');
@@ -17,8 +17,13 @@ test('Browser Context-Validating Error login', async ({ page }) => {
 			(await products.nth(i).locator('b').textContent()) === productName
 		) {
 			// add to cart
-			await products.nth(i).locator('text=" Add To Cart"').click();
+			await products.nth(i).locator('text= Add To Cart').click();
+			await page.pause();
 			break;
 		}
+		await page.locator("[routerlink*='cart]").click();
+		await page.locator('div li').first().waitFor();
+		const bool = page.locator('h3:has-text("ZARA COAT 3")').isVisible();
+		expect(bool).toBeTruthy();
 	}
 });
