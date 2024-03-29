@@ -15,24 +15,24 @@ const orderPayLoad = {
 	],
 };
 
-let orderId;
-let token;
+let response;
+// let token;
 
 test.beforeAll(async () => {
 	const apiContext = await request.newContext();
 	const apiUtils = new APIUtils(apiContext, loginPayLoad);
-	apiUtils.createOrder(orderPayLoad);
+	response = await apiUtils.createOrder(orderPayLoad);
 });
 
 // test.beforeEach(() => {});
 
 test('Add To Cart -> Checkout example', async ({ page }) => {
-	const apiUtils = new APIUtils(apiContext, loginPayLoad);
-	const orderId = createOrder(orderPayLoad);
+	// const apiUtils = new APIUtils(apiContext, loginPayLoad);
+	// const orderId = createOrder(orderPayLoad);
 
 	page.addInitScript((value) => {
 		window.localStorage.setItem('token', value);
-	}, token);
+	}, response.token);
 
 	// await page.goto('https://www.rahulshettyacademy.com/client');
 	// await page.locator('#userEmail').fill(email);
@@ -102,14 +102,14 @@ test('Add To Cart -> Checkout example', async ({ page }) => {
 	const rows = await page.locator('tbody tr');
 	for (let i = 0; i < (await rows.count()); i++) {
 		const rowOrderId = await rows.nth(i).locator('th').textContent();
-		if (orderId.includes(rowOrderId)) {
+		if (response.orderId.includes(rowOrderId)) {
 			await rows.nth(i).locator('button').first().click();
 			break;
 		}
 	}
 	await page.locator('.col-text').textContent();
 	const orderIdDetails = await page.locator('.col-text').textContent();
-	await page.pause();
+	// await page.pause();
 	expect(orderId.includes(orderIdDetails)).toBeTruthy();
 });
 
