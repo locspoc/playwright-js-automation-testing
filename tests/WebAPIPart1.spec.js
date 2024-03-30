@@ -110,7 +110,7 @@ test('Add To Cart -> Checkout example', async ({ page }) => {
 	await page.locator('.col-text').textContent();
 	const orderIdDetails = await page.locator('.col-text').textContent();
 	// await page.pause();
-	expect(orderId.includes(orderIdDetails)).toBeTruthy();
+	expect(response.orderId.includes(orderIdDetails)).toBeTruthy();
 });
 
 // Verify if order created is showing in history page

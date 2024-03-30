@@ -5,6 +5,7 @@ module.exports = defineConfig({
 	/* Test directory - where are your tests? */
 	testDir: './tests',
 	/* Maximum time one test can run for. */
+	// timeout: 100 * 1000, // for debugging
 	timeout: 30 * 1000,
 	expect: {
 		timeout: 5000,
@@ -17,6 +18,6 @@ module.exports = defineConfig({
 		headless: false,
 		screenshot: 'on',
 		// trace: 'on',
-		trace: 'retain-on-failure', // off, on
+		trace: 'on', // on, off, retain-on-failure
 	},
 });
