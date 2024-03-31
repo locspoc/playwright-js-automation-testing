@@ -50,9 +50,9 @@ test('Upload download excel validation', async ({ page }) => {
 	await page
 		.locator('#fileinput')
 		.setInputFiles(`${downloadsPath}download.xlsx`);
-	// const textlocator = page.getByText(textSearch);
-	// const desiredRow = await page.getByRole('row').filter({ has: textlocator });
-	// await expect(desiredRow.locator('#cell-4-undefined')).toContainText(
-	// 	updateValue
-	// );
+	const textLocator = page.getByText(textSearch);
+	const desiredRow = await page.getByRole('row').filter({ has: textLocator });
+	await expect(desiredRow.locator('#cell-4-undefined')).toContainText(
+		updateValue
+	);
 });
