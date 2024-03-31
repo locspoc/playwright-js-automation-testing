@@ -10,14 +10,26 @@ const ExcelJs = require('exceljs');
 // 	});
 // });
 
-async function excelTest() {
-	let output = { row: -1, column: -1 };
+// let output = { row: -1, column: -1 };
+
+async function writeExcelTest(searchText, replaceText, change, filePath) {
 	const workbook = new ExcelJs.Workbook();
-	await workbook.xlsx.readFile('./excelDownloadTest.xlsx');
+	await workbook.xlsx.readFile(filePath);
 	const worksheet = workbook.getWorksheet('Sheet1');
+	const output = await readExcel(worksheet, searchText);
+	const cell = worksheet.getCell(
+		output.row,
+		output.column + change.colChange
+	);
+	cell.value = replaceText;
+	await workbook.xlsx.writeFile(filePath);
+}
+
+async function readExcel(worksheet, searchText) {
+	let output = { row: -1, column: -1 };
 	worksheet.eachRow((row, rowNumber) => {
 		row.eachCell((cell, colNumber) => {
-			if (cell.value === 'Banana') {
+			if (cell.value === searchText) {
 				// console.log('rowNumber: ', rowNumber);
 				// console.log('colNumber: ', colNumber);
 				output.column = colNumber;
@@ -25,8 +37,13 @@ async function excelTest() {
 			}
 		});
 	});
-	const cell = worksheet.getCell(output.row, output.column);
-	cell.value = 'Republic';
-	workbook.xlsx.writeFile('./excelDownloadTest.xlsx');
+	return output;
 }
-excelTest();
+
+// Update Mango price to 350
+writeExcelTest(
+	'Mango',
+	350,
+	{ rowChange: 0, colChange: 2 },
+	'./excelDownloadTest.xlsx'
+);
