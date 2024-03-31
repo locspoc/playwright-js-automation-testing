@@ -1,33 +1,25 @@
 const { test, expect } = require('@playwright/test');
 
+const { DashboardPage } = require('../pageObjects/DashboardPage');
 const { LoginPage } = require('../pageObjects/LoginPage');
 
 test('Add To Cart -> Checkout example', async ({ page }) => {
+	// Login
 	const username = 'anshika@gmail.com';
 	const password = 'Iamking@000';
 	const productName = 'ZARA COAT 3';
 	const products = page.locator('.card-body');
 	const loginPage = new LoginPage(page);
-	loginPage.goTo();
-	loginPage.validLogin(username, password);
-	await page.waitForLoadState('networkidle');
-	await page.locator('.card-body b').first().waitFor();
-	const titles = await page.locator('.card-body b').allTextContents();
-	console.log(titles);
-	const count = await products.count();
-	for (let i = 0; i < count; i++) {
-		if (
-			(await products.nth(i).locator('b').textContent()) === productName
-		) {
-			// add to cart
-			await products.nth(i).locator('text= Add To Cart').click();
-			// await page.pause();
-			break;
-		}
-		// await page.pause();
-	}
-	await page.locator("[routerlink*='/dashboard/cart']").click();
-	// await page.pause();
+
+	await loginPage.goTo();
+	await loginPage.validLogin(username, password);
+
+	// Dashboard
+	const dashboardPage = new DashboardPage(page);
+
+	await dashboardPage.searchProductAddCart(productName);
+	await dashboardPage.navigateToCart();
+
 	await page.locator('div li').first().waitFor();
 	// await page.pause();
 	const bool = page.locator('h3:has-text("ZARA COAT 3")').isVisible();
