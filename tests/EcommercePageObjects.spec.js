@@ -1,5 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
+const dataset = JSON.parse(
+	JSON.stringify(require('../utils/PlaceOrderTestData.json'))
+);
 const { POManager } = require('../pageObjects/POManager');
 
 test('Add To Cart -> Checkout example', async ({ page }) => {
@@ -7,22 +10,19 @@ test('Add To Cart -> Checkout example', async ({ page }) => {
 	const poManager = new POManager(page);
 
 	// Login
-	const username = 'anshika@gmail.com';
-	const password = 'Iamking@000';
-	const productName = 'ZARA COAT 3';
 	const products = page.locator('.card-body');
 	const loginPage = poManager.getLoginPage();
 	await loginPage.goTo();
-	await loginPage.validLogin(username, password);
+	await loginPage.validLogin(dataset.username, dataset.password);
 
 	// Dashboard
 	const dashboardPage = poManager.getDashboardPage();
-	await dashboardPage.searchProductAddCart(productName);
+	await dashboardPage.searchProductAddCart(dataset.productName);
 	await dashboardPage.navigateToCart();
 
 	// Cart Page
 	const cartPage = poManager.getCartPage();
-	await cartPage.VerifyProductIsDisplayed(productName);
+	await cartPage.VerifyProductIsDisplayed(dataset.productName);
 	await cartPage.Checkout();
 
 	// Order Reviews Page
