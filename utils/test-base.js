@@ -1,6 +1,6 @@
 const { base } = require('@playwright/test');
 
-exports.test = base.test.extend({
+exports.customtest = base.test.extend({
 	testDataForOrder: {
 		username: 'anshika@gmail.com',
 		password: 'Iamking@000',
