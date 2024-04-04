@@ -2,7 +2,7 @@
 // import { customtest, expect } from '../utils/test-base';
 
 const { test } = require('@playwright/test');
-const { customtest, expect } = require('../utils/test-base');
+const { customtest } = require('../utils/test-base');
 
 const dataset = JSON.parse(
 	JSON.stringify(require('../utils/PlaceOrderTestData.json'))
