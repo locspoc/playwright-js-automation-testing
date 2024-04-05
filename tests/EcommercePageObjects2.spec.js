@@ -1,7 +1,7 @@
 // import { test } from '@playwright/test';
 // import { customtest, expect } from '../utils/test-base';
 
-const { test } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 const { customtest } = require('../utils/test-base');
 
 const dataset = JSON.parse(
@@ -44,6 +44,11 @@ customtest.only(
 		await dashboardPage.navigateToOrders();
 		const ordersHistoryPage = poManager.getOrdersHistoryPage();
 		await ordersHistoryPage.searchOrderAndSelect(orderId);
+		console.log('orderId: ', orderId);
+		console.log(
+			'ordersHistoryPage.getOrderId(): ',
+			ordersHistoryPage.getOrderId()
+		);
 		expect(
 			orderId.includes(await ordersHistoryPage.getOrderId())
 		).toBeTruthy();
