@@ -1,9 +1,11 @@
-const { base } = require('@playwright/test');
+// import { base } from '@playwright/test';
+require('dotenv').config();
+const base = require('@playwright/test');
 
-exports.test = base.test.extend({
+exports.customtest = base.test.extend({
 	testDataForOrder: {
-		username: 'anshika@gmail.com',
-		password: 'Iamking@000',
+		username: process.env.USERNAME,
+		password: process.env.PASSWORD,
 		productName: 'ZARA COAT 3',
 	},
 });
