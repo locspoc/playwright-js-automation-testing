@@ -21,6 +21,7 @@ module.exports = defineConfig({
 				screenshot: 'on', // on, off, only-on-failure
 				// trace: 'on',
 				trace: 'on', // on, off, retain-on-failure
+				...devices['iPhone 11'],
 			},
 		},
 		{
@@ -29,8 +30,12 @@ module.exports = defineConfig({
 				browserName: 'chromium',
 				headless: false,
 				screenshot: 'on', // on, off, only-on-failure
+				ignoreHTTPSErrors: true,
+				permissions: ['geolocation'],
 				// trace: 'on',
 				trace: 'on', // on, off, retain-on-failure
+				// ...devices[''],
+				// viewport: { width: 720, height: 720 },
 			},
 		},
 	],
