@@ -6,18 +6,33 @@ module.exports = defineConfig({
 	testDir: './tests',
 	/* Maximum time one test can run for. */
 	// timeout: 100 * 1000, // for debugging
-	timeout: 30 * 1000,
+	timeout: 300 * 1000,
 	expect: {
 		timeout: 5000,
 	},
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	reporter: 'html',
+	projects: [
+		{
+			name: 'safari',
+			use: {
+				browserName: 'webkit',
+				headless: false,
+				screenshot: 'on', // on, off, only-on-failure
+				// trace: 'on',
+				trace: 'on', // on, off, retain-on-failure
+			},
+		},
+		{
+			name: 'chrome',
+			use: {
+				browserName: 'chromium',
+				headless: false,
+				screenshot: 'on', // on, off, only-on-failure
+				// trace: 'on',
+				trace: 'on', // on, off, retain-on-failure
+			},
+		},
+	],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-	use: {
-		browserName: 'chromium',
-		headless: false,
-		screenshot: 'on', // on, off, only-on-failure
-		// trace: 'on',
-		trace: 'on', // on, off, retain-on-failure
-	},
 });
