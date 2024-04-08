@@ -28,13 +28,13 @@ module.exports = defineConfig({
 			name: 'chrome',
 			use: {
 				browserName: 'chromium',
+				// ...devices[''],
 				headless: false,
-				screenshot: 'on', // on, off, only-on-failure
 				ignoreHTTPSErrors: true,
 				permissions: ['geolocation'],
-				// trace: 'on',
+				screenshot: 'on', // on, off, only-on-failure
 				trace: 'on', // on, off, retain-on-failure
-				// ...devices[''],
+				video: 'retain-on-failure',
 				// viewport: { width: 720, height: 720 },
 			},
 		},
