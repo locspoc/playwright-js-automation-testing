@@ -26,7 +26,7 @@ test.beforeAll(async () => {
 
 // test.beforeEach(() => {});
 
-test('Add To Cart -> Checkout example', async ({ page }) => {
+test('@API @Ecommerce Add To Cart -> Checkout example', async ({ page }) => {
 	// const apiUtils = new APIUtils(apiContext, loginPayLoad);
 	// const orderId = createOrder(orderPayLoad);
 

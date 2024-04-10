@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('Add To Cart -> Checkout example', async ({ page }) => {
+test('@Ecommerce Add To Cart -> Checkout example', async ({ page }) => {
 	const email = 'anshika@gmail.com';
 	const password = 'Iamking@000';
 	const productName = 'ZARA COAT 3';
