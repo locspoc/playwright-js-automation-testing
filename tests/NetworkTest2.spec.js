@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.only('Security test request intercept', async ({ page }) => {
+test('Security test request intercept', async ({ page }) => {
 	// login and reach orders page
 	const email = 'anshika@gmail.com';
 	const password = 'Iamking@000';
