@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.only('Popup validations', async ({ page }) => {
+test('Popup validations', async ({ page }) => {
 	await page.goto('https://rahulshettyacademy.com/AutomationPractice/');
 	// await page.goto('https://google.com');
 	// await page.goBack();
@@ -31,7 +31,7 @@ test('Screenshot & Visual comparison', async ({ page }) => {
 });
 
 // screenshot -> store -> screenshot -> compare
-test.only('visual', async ({ page }) => {
+test('visual', async ({ page }) => {
 	await page.goto('https://loctran.com.au/');
 	expect(await page.screenshot()).toMatchSnapshot('landing.png');
 });

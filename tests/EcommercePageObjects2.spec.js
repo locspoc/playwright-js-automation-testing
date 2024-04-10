@@ -9,7 +9,7 @@ const dataset = JSON.parse(
 );
 const { POManager } = require('../pageObjects/POManager');
 
-customtest.only(
+customtest(
 	`Add To Cart -> Checkout -> Place Order for: customtest`,
 	async ({ page, testDataForOrder }) => {
 		// Page Objects Manager
