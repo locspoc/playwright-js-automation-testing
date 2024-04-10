@@ -6,7 +6,7 @@ const dataset = JSON.parse(
 const { POManager } = require('../pageObjects/POManager');
 
 for (const data of dataset) {
-	test(`Add To Cart -> Checkout -> Place Order for: ${data.productName}`, async ({
+	test(`@Ecommerce Add To Cart -> Checkout -> Place Order for: ${data.productName}`, async ({
 		page,
 	}) => {
 		// Page Objects Manager

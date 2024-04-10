@@ -18,7 +18,7 @@ test.beforeAll(async ({ browser }) => {
 	webContext = await browser.newContext({ storageState: 'state.json' });
 });
 
-test('Add To Cart -> Checkout example', async () => {
+test('@API @Ecommerce Add To Cart -> Checkout example', async () => {
 	const email = 'anshika@gmail.com';
 	const productName = 'ZARA COAT 3';
 	const page = await webContext.newPage();
