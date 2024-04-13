@@ -4,7 +4,10 @@
 	"description": "Playwright JS Automation Testing",
 	"main": "index.js",
 	"scripts": {
-		"test": "npx playwright test tests/UIBasicsTest.spec.js --headed"
+		"regressionTests": "npx playwright test",
+		"ecommerceTests": "npx playwright test --grep @Ecommerce",
+		"apiTests": "npx playwright test --grep @API",
+		"safariNewConfig": "npx playwright test --config playwright.config1.js --project=safari"
 	},
 	"keywords": [],
 	"author": "",
