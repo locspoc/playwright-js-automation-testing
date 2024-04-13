@@ -1,0 +1,17 @@
+[
+  'ZARA COAT 3',
+  'ADIDAS ORIGINAL',
+  'IPHONE 13 PRO',
+  'Laptop',
+  'Laptop',
+  'Laptop',
+  'Laptop',
+  'Laptop',
+  'Laptop'
+]
+dropdown:  locator('.ta-results')
+button count:  3
+optionsCount:  3
+text:   British Indian Ocean Territory
+text:   India
+orderId:   | 6619c84ea86f8f74dcbfc924 | 

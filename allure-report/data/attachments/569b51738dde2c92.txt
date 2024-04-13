@@ -1,0 +1,6 @@
+token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjN2JmMTQ4NzY3ZjFmMTIxNWQyY2EiLCJ1c2VyRW1haWwiOiJhbnNoaWthQGdtYWlsLmNvbSIsInVzZXJNb2JpbGUiOjk4NzY1NDMyMTAsImlhdCI6MTcxMjk2NTcxNCwiZXhwIjoxNzQ0NTIzMzE0fQ.A0VGbbAItMQ2deFACbj8NMo52oTS9mlFGFm4S5fcQ-o
+orderResponseJson:  {
+  orders: [ '6619c852a86f8f74dcbfc94a' ],
+  productOrderId: [ '6581ca399fd99c85e8ee7f45' ],
+  message: 'Order Placed Successfully'
+}

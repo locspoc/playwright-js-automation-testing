@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Apr 13 09:18:45 ACST 2024","Sat Apr 13 09:19:12 ACST 2024","26173","","WebAPIPart2.spec.js","","","","@API @Ecommerce Add To Cart -> Checkout example",""
+"passed","Sat Apr 13 09:18:33 ACST 2024","Sat Apr 13 09:18:49 ACST 2024","15978","","EcommercePageObjects.spec.js","","","","@Ecommerce Add To Cart -> Checkout -> Place Order for: ADIDAS ORIGINAL",""
+"passed","Sat Apr 13 09:18:33 ACST 2024","Sat Apr 13 09:18:45 ACST 2024","12837","","WebAPIPart1.spec.js","","","","@API @Ecommerce Add To Cart -> Checkout example",""
+"passed","Sat Apr 13 09:18:06 ACST 2024","Sat Apr 13 09:18:33 ACST 2024","26756","","Ecommerce.spec.js","","","","@Ecommerce Add To Cart -> Checkout example",""
+"passed","Sat Apr 13 09:18:06 ACST 2024","Sat Apr 13 09:18:33 ACST 2024","26853","","EcommercePageObjects.spec.js","","","","@Ecommerce Add To Cart -> Checkout -> Place Order for: ZARA COAT 3",""
+"passed","Sat Apr 13 09:19:21 ACST 2024","Sat Apr 13 09:19:39 ACST 2024","17384","","EcommercePageObjects2.spec.js","","","","@Ecommerce Add To Cart -> Checkout -> Place Order for: customtest",""
