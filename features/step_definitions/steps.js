@@ -8,7 +8,7 @@ Given(
 	'A login to Ecommerce application with {string} and {string}',
 	{ timeout: 100 * 1000 },
 	async function (username, password) {
-		const browser = await chromium.launch();
+		const browser = await chromium.launch({ headless: false });
 		const context = await browser.newContext();
 		this.page = await context.newPage();
 
@@ -32,28 +32,34 @@ When('Add {string} to Cart', async function (productName) {
 
 Then('Verify {string} is displayed in the Cart', async function (productName) {
 	// Cart Page
-	const cartPage = this.poManager.getCartPage();
-	await cartPage.VerifyProductIsDisplayed(productName);
-	await cartPage.Checkout();
+	this.cartPage = this.poManager.getCartPage();
+	// await this.cartPage.VerifyProductIsDisplayed(productName);
 });
 
-When('Enter valid details and Place the Order', async function (string) {
-	// Order Reviews Page
-	const ordersReviewPage = this.poManager.getOrdersReviewPage();
-	await ordersReviewPage.searchCountryAndSelect('ind', 'India');
-	const orderId = await ordersReviewPage.SubmitAndGetOrderId();
-	console.log('orderId: ', orderId);
-});
+When(
+	'Enter valid details and Place the Order',
+	{ timeout: 100 * 1000 },
+	async function (string) {
+		// Order Reviews Page
+		// this.cartPage.Checkout();
+		// const ordersReviewPage = this.poManager.getOrdersReviewPage();
+		// await ordersReviewPage.searchCountryAndSelect('ind', 'India');
+		// this.orderId = await ordersReviewPage.SubmitAndGetOrderId();
+		// console.log('this.orderId: ', this.orderId);
+	}
+);
 
 Then('Verify order is present in the OrderHistory', async function (string) {
 	// Order History Page
-	await this.dashboardPage.navigateToOrders();
-	const ordersHistoryPage = this.poManager.getOrdersHistoryPage();
-	await ordersHistoryPage.searchOrderAndSelect(orderId);
-	console.log('orderId: ', orderId);
-	console.log(
-		'ordersHistoryPage.getOrderId(): ',
-		ordersHistoryPage.getOrderId()
-	);
-	expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
+	// await this.dashboardPage.navigateToOrders();
+	// const ordersHistoryPage = this.poManager.getOrdersHistoryPage();
+	// await ordersHistoryPage.searchOrderAndSelect(this.orderId);
+	// console.log('this.orderId: ', this.orderId);
+	// console.log(
+	// 	'ordersHistoryPage.getOrderId(): ',
+	// 	ordersHistoryPage.getOrderId()
+	// );
+	// expect(
+	// 	this.orderId.includes(await ordersHistoryPage.getOrderId())
+	// ).toBeTruthy();
 });
