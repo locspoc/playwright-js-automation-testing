@@ -35,7 +35,7 @@ When(
 	async function (string) {
 		// Order Reviews Page
 		await this.cartPage.Checkout();
-		const ordersReviewPage = this.poManager.getOrdersReviewPage();
+		const ordersReviewPage = await this.poManager.getOrdersReviewPage();
 		await ordersReviewPage.searchCountryAndSelect('ind', 'India');
 		this.orderId = await ordersReviewPage.SubmitAndGetOrderId();
 		console.log('this.orderId: ', this.orderId);
