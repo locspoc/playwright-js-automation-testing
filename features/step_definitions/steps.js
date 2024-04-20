@@ -8,13 +8,6 @@ Given(
 	'A login to Ecommerce application with {string} and {string}',
 	{ timeout: 100 * 1000 },
 	async function (username, password) {
-		const browser = await chromium.launch({ headless: false });
-		const context = await browser.newContext();
-		this.page = await context.newPage();
-
-		// Page Objects Manager
-		this.poManager = new POManager(this.page);
-
 		// Login
 		const products = await this.page.locator('.card-body');
 		const loginPage = await this.poManager.getLoginPage();
@@ -41,25 +34,25 @@ When(
 	{ timeout: 100 * 1000 },
 	async function (string) {
 		// Order Reviews Page
-		// this.cartPage.Checkout();
-		// const ordersReviewPage = this.poManager.getOrdersReviewPage();
-		// await ordersReviewPage.searchCountryAndSelect('ind', 'India');
-		// this.orderId = await ordersReviewPage.SubmitAndGetOrderId();
-		// console.log('this.orderId: ', this.orderId);
+		this.cartPage.Checkout();
+		const ordersReviewPage = this.poManager.getOrdersReviewPage();
+		await ordersReviewPage.searchCountryAndSelect('ind', 'India');
+		this.orderId = await ordersReviewPage.SubmitAndGetOrderId();
+		console.log('this.orderId: ', this.orderId);
 	}
 );
 
 Then('Verify order is present in the OrderHistory', async function (string) {
 	// Order History Page
-	// await this.dashboardPage.navigateToOrders();
-	// const ordersHistoryPage = this.poManager.getOrdersHistoryPage();
-	// await ordersHistoryPage.searchOrderAndSelect(this.orderId);
-	// console.log('this.orderId: ', this.orderId);
-	// console.log(
-	// 	'ordersHistoryPage.getOrderId(): ',
-	// 	ordersHistoryPage.getOrderId()
-	// );
-	// expect(
-	// 	this.orderId.includes(await ordersHistoryPage.getOrderId())
-	// ).toBeTruthy();
+	await this.dashboardPage.navigateToOrders();
+	const ordersHistoryPage = this.poManager.getOrdersHistoryPage();
+	await ordersHistoryPage.searchOrderAndSelect(this.orderId);
+	console.log('this.orderId: ', this.orderId);
+	console.log(
+		'ordersHistoryPage.getOrderId(): ',
+		ordersHistoryPage.getOrderId()
+	);
+	expect(
+		this.orderId.includes(await ordersHistoryPage.getOrderId())
+	).toBeTruthy();
 });
