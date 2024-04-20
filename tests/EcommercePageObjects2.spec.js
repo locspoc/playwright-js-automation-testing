@@ -1,7 +1,8 @@
 // import { test } from '@playwright/test';
 // import { customtest, expect } from '../utils/test-base';
 
-const { test, expect } = require('@playwright/test');
+const playwright = require('@playwright/test');
+const { expect } = require('@playwright/test');
 const { customtest } = require('../utils/test-base');
 
 const dataset = JSON.parse(
