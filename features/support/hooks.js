@@ -8,6 +8,7 @@ const {
 } = require('@cucumber/cucumber');
 const { POManager } = require('../../pageObjects/POManager');
 
+// Before({ tags: '@Validation and @Foo' }, async function () {
 Before(async function () {
 	const browser = await chromium.launch({ headless: false });
 	const context = await browser.newContext();
